@@ -1,7 +1,14 @@
-from flask import Blueprint
+from flask_restful import Resource
 
-bpClientes = Blueprint('clientes', __name__)
+class Clientes(Resource):
+    def get(self):
+        return {"clientes": "GET"}
 
-@bpClientes.route('/', methods=['GET', 'POST'])
-def clientes():
-    return {"teste": "hello clientes!"}
+    def post(self):
+        return {"clientes": "POST"}
+
+    def put(self):
+        return {"clientes": "PUT"}
+
+    def delete(self):
+        return {"clientes": "DELETE"}
