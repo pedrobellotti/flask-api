@@ -4,14 +4,6 @@ from banco import banco, ClienteModelo, ClienteSchema
 schemaClientes = ClienteSchema(many=True) #Varios clientes
 schemaCliente = ClienteSchema() #Um cliente
 
-campos = {
-	'codigo': fields.Integer,
-	'nome': fields.String,
-	'razao_social': fields.String,
-	'cnpj': fields.String,
-    'data_inclusao': fields.DateTime
-}
-
 class Clientes(Resource):
 
     #Le os dados
@@ -34,7 +26,6 @@ class Clientes(Resource):
             return {'status': '204', 'message': 'Algum erro aconteceu', 'error': 'Erro na listagem dos clientes'}, 204
 
     #POST - Cria um cliente
-    @marshal_with(campos)
     def post(self):
         #Recebe os dados
         args = self.parse()
