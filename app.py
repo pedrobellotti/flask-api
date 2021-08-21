@@ -2,8 +2,8 @@ from flask import Flask
 from clientes import Clientes
 from flask_restful import Api
 from flask import Blueprint
-
-app = Flask(__name__)
+from flask_migrate import Migrate
+from banco import banco
 
 bpApi = Blueprint('api', __name__)
 api = Api(bpApi)
@@ -11,15 +11,14 @@ api = Api(bpApi)
 # Route
 api.add_resource(Clientes, '/clientes')
 
-#Home
-@app.route('/', methods=['GET', 'POST'])
-def home():
-    return "Hello home!"
-
-def main(app):
+def create_app():
+    app = Flask(__name__)
     app.config.from_object("cfg")
     app.register_blueprint(bpApi, url_prefix='/api')
-    app.run(debug=True)
+    banco.init_app(app)
+    migrate = Migrate(app, banco) #Migraçao do banco (flask db init, migrate, upgrade)
+    return app
 
 if __name__ == '__main__':
-    main(app)
+    app = create_app()
+    app.run(debug=True)
