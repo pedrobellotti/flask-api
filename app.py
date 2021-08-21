@@ -5,12 +5,14 @@ from flask import Blueprint
 from flask_migrate import Migrate
 from banco import banco
 
+#Api e blueprint
 bpApi = Blueprint('api', __name__)
 api = Api(bpApi)
 
-# Route
+#Rota /api/clientes
 api.add_resource(Clientes, '/clientes')
 
+#Cria o app com a cfg.py
 def create_app():
     app = Flask(__name__)
     app.config.from_object("cfg")
