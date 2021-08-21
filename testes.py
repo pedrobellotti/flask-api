@@ -29,3 +29,15 @@ print(resp.json())
 cliente2={'codigo':'987', 'nome': 'Cliente 2'}
 resp = requests.put(url + 'clientes', data=cliente2)
 print(resp.json())
+
+#Tenta remover novamente o cliente 321 (erro)
+resp = requests.delete(url + 'clientes', data=cliente1)
+print(resp.json())
+
+#Tenta adicionar um cliente com mesmo codigo 987 (erro)
+cliente3={'codigo':'987',
+'nome':'Teste 3', 
+'razao_social': 'Cliente de Teste 3',
+'cnpj': '56.741.963/0001-12'}
+resp = requests.post(url + 'clientes', data=cliente3)
+print(resp.json())
