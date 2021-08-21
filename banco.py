@@ -2,7 +2,7 @@ from flask import Flask
 from marshmallow import fields
 from flask_marshmallow import Marshmallow
 from flask_sqlalchemy import SQLAlchemy
-
+from datetime import datetime
 
 ma = Marshmallow()
 banco = SQLAlchemy()
@@ -21,6 +21,7 @@ class ClienteModelo(banco.Model):
         self.nome = nome
         self.razao_social = razao_social
         self.cnpj = cnpj
+        self.data_inclusao = datetime.now()
 
 #Schema
 class ClienteSchema(ma.Schema):
@@ -28,3 +29,4 @@ class ClienteSchema(ma.Schema):
     nome = fields.String(required=True)
     razao_social = fields.String(required=True)
     cnpj = fields.String(required=True)
+    data_inclusao = fields.DateTime()
