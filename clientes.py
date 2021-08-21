@@ -1,4 +1,4 @@
-from flask_restful import Resource, marshal_with, reqparse, fields
+from flask_restful import Resource, reqparse
 from banco import banco, ClienteModelo, ClienteSchema
 
 schemaClientes = ClienteSchema(many=True) #Varios clientes

@@ -1,4 +1,3 @@
-from flask import Flask
 from marshmallow import fields
 from flask_marshmallow import Marshmallow
 from flask_sqlalchemy import SQLAlchemy
