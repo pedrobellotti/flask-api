@@ -26,3 +26,6 @@ resp = requests.delete(url + 'clientes', data=cliente1)
 print(resp.json())
 
 #Atualiza o nome do cliente 987
+cliente2={'codigo':'987', 'nome': 'Cliente 2'}
+resp = requests.put(url + 'clientes', data=cliente2)
+print(resp.json())
